@@ -1,0 +1,156 @@
+{% extends 'userin.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <!-- Payment Method Section on the Left -->
+        <div class="col-md-8">
+            <h3 class="text-success mb-3">Select Payment Method</h3>
+            <div class="row">
+                <!-- Visa Card Option -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow text-center p-3">
+                        <img src="{% static 'imgs/visa.png' %}" alt="Visa Card" class="img-fluid" style="max-width: 100px; margin: 0 auto;">
+                        <h5 class="mt-3">Visa Card</h5>
+                        <p>Pay using your Visa Card</p>
+                        <button class="btn btn-success" onclick="showPaymentForm('visa')">Select</button>
+                    </div>
+                </div>
+                <!-- MTN Mobile Money Option -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow text-center p-3">
+                        <img src="{% static 'imgs/mtn.png' %}" alt="MTN Mobile Money" class="img-fluid" style="max-width: 100px; margin: 0 auto;">
+                        <h5 class="mt-3">MTN Mobile Money</h5>
+                        <p>Pay using MTN Mobile Money</p>
+                        <button class="btn btn-success" onclick="showPaymentForm('mtn')">Select</button>
+                    </div>
+                </div>
+                <!-- Cash Option -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow text-center p-3">
+                        <img src="{% static 'imgs/paypal.png' %}" alt="Pay Pal" class="img-fluid" style="max-width: 100px; margin: 0 auto;">
+                        <h5 class="mt-3">Pay Pal</h5>
+                        <p>Pay using Pay Pal</p>
+                        <button class="btn btn-success" onclick="showPaymentForm('cash')">Select</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Form -->
+            <div id="payment-form" class="mt-4" style="display: none;">
+                <h4 class="mb-3 text-success">Payment Details</h4>
+                <form>
+                    <div id="visa-form" class="payment-option" style="display: none;">
+                        <div class="mb-3">
+                            <label for="card-number" class="form-label">Card Number</label>
+                            <input type="text" class="form-control" id="card-number" placeholder="1234 5678 9012 3456">
+                        </div>
+                        <div class="mb-3">
+                            <label for="expiry" class="form-label">Expiry Date</label>
+                            <input type="text" class="form-control" id="expiry" placeholder="MM/YY">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cvv" placeholder="123">
+                        </div>
+                    </div>
+                    <div id="mtn-form" class="payment-option" style="display: none;">
+                        <div class="mb-3">
+                            <label for="mtn-number" class="form-label">MTN Mobile Number</label>
+                            <input type="text" class="form-control" id="mtn-number" placeholder="07XXXXXXXX">
+                        </div>
+                    </div>
+                    <div id="cash-form" class="payment-option" style="display: none;">
+                        <div class="mb-3">
+                            <label for="mtn-number" class="form-label">Pay Pal</label>
+                            <input type="text" class="form-control" id="mtn-number" placeholder="Pay Pal Id">
+                        </div>
+                    </div>
+                    
+                        <a href="{% url 'ticket' %}" class="btn btn-success mt-3">Pay Now</a>
+                    
+                </form>
+            </div>
+        </div>
+
+        <!-- Recent Activities on the Right -->
+        <div class="col-md-4">
+            <h4 class="mb-3">Recent Activities</h4>
+            <div class="activities-card d-flex mb-3">
+                <div class="activities-image">
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image" class="img-fluid" style="max-width: 60px;">
+                </div>
+                <div class="activities-details ms-3">
+                    <p><strong>ID #1111</strong> - 2:30 hrs</p>
+                    <p><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 43</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-3">
+                <div class="activities-image">
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image" class="img-fluid" style="max-width: 60px;">
+                </div>
+                <div class="activities-details ms-3">
+                    <p><strong>ID #2222</strong> - 1:30 hrs</p>
+                    <p><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 44</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-3">
+                <div class="activities-image">
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image" class="img-fluid" style="max-width: 60px;">
+                </div>
+                <div class="activities-details ms-3">
+                    <p><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-3">
+                <div class="activities-image">
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image" class="img-fluid" style="max-width: 60px;">
+                </div>
+                <div class="activities-details ms-3">
+                    <p><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-3">
+                <div class="activities-image">
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image" class="img-fluid" style="max-width: 60px;">
+                </div>
+                <div class="activities-details ms-3">
+                    <p><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-3">
+                <div class="activities-image">
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image" class="img-fluid" style="max-width: 60px;">
+                </div>
+                <div class="activities-details ms-3">
+                    <p><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPaymentForm(method) {
+        // Hide all payment forms
+        document.getElementById('visa-form').style.display = 'none';
+        document.getElementById('mtn-form').style.display = 'none';
+        document.getElementById('cash-form').style.display = 'none';
+        document.getElementById('payment-form').style.display = 'block';
+
+        // Show the selected payment form
+        if (method === 'visa') {
+            document.getElementById('visa-form').style.display = 'block';
+        } else if (method === 'mtn') {
+            document.getElementById('mtn-form').style.display = 'block';
+        } else if (method === 'cash') {
+            document.getElementById('cash-form').style.display = 'block';
+        }
+    }
+</script>
+{% endblock %}

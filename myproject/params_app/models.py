@@ -32,17 +32,20 @@ class Vehicle(models.Model):
 # Parking Space Model
 class ParkingSpace(models.Model):
     space_id = models.AutoField(primary_key=True)
-    space_type = models.CharField(max_length=50),
-    choices=[
-        ('Compact', 'Compact'),
-        ('Large', 'Large'),
-        ('Electric Vehicle', 'Electric Vehicle')
-    ]
+    space_type = models.CharField(
+        max_length=50,
+        choices=[
+            ('Compact', 'Compact'),
+            ('Large', 'Large'),
+            ('Electric Vehicle', 'Electric Vehicle')
+        ]
+    )
     is_occupied = models.BooleanField(default=False)
     parking_lot = models.ForeignKey(ParkingLot, on_delete=models.CASCADE, related_name='spaces')
 
     def __str__(self):
         return f"Space {self.space_id} in Lot {self.parking_lot}"
+
 
 
 # Parking Ticket Model
@@ -86,3 +89,14 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"Payment {self.payment_id} for Ticket {self.ticket}"
+from django.db import models
+
+class ContactMessage(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.full_name
+

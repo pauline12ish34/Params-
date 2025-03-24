@@ -1,0 +1,283 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Dashboard</title>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* General Styling */
+        body {
+            font-family:'Space Mono';
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header-title {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+
+        .header-user {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Sidebar Icons */
+        .icon-menu i {
+            font-size: 1.8rem;
+            color: #198754;
+            display: block;
+        }
+
+        .icon-menu p {
+            font-size: 0.9rem;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Parking Cards */
+        .card-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .card-wrapper img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .free-slots a{
+            text-decoration: none;
+            color: white;
+        }
+        .free-slots a:hover{
+            text-decoration: none;
+            color:#0e1612;
+        }
+        .free-slots {
+        
+            position: absolute;
+            bottom: 30px;
+            right: 15px;
+            background: rgba(0, 128, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        /* Recent Activities */
+        .activities-card {
+            background-color: #ffffff;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .activities-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Logo -->
+            <div class="d-flex align-items-center">
+                <a href="http://127.0.0.1:8000">
+                    <img src="{% static 'imgs/TrafficJam.svg' %}" alt="Logo" width="50">
+                </a>
+                <span class="header-title">PARMS</span>
+            </div>
+            <!-- Nav -->
+            <nav>
+                <a href="http://127.0.0.1:8000/userin" class="me-4 text-dark text-decoration-none">Home</a>
+                <a href="#" class="me-4 text-dark text-decoration-none">Activities</a>
+                <a href="#" class="text-dark text-decoration-none">History</a>
+            </nav>
+            <!-- User -->
+            <div class="d-flex align-items-center">
+                <span class="header-user"><a href="{% url 'logout' %}" class="text-dark text-decoration-none">Logout</a>
+                </a></span>
+                <img src="{% static 'imgs/user1.png' %}" alt="User" width="45" class="rounded-circle">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-bell text-success me-3" style="font-size: 1.5rem; cursor: pointer;" title="Notifications"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Sidebar Icons -->
+        <div class="row text-center mb-4">
+            <div class="col">
+                <div class="icon-menu">
+                    <i class="fas fa-bus"></i>
+                    <p>Bus</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="icon-menu">
+                    <i class="fas fa-bicycle"></i>
+                    <p>Bicycle</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="icon-menu">
+                    <i class="fas fa-car"></i>
+                    <p>Car</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="icon-menu">
+                    <i class="fas fa-motorcycle"></i>
+                    <p>Motor Cycle</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="icon-menu">
+                    <i class="fas fa-truck"></i>
+                    <p>Truck</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="icon-menu">
+                    <i class="fas fa-plus"></i>
+                    <p>Others</p>
+                </div>
+            </div>
+            <div class="col">
+                <i class="fas fa-search text-success fa-2x" ></i>
+            </div>
+        </div>
+        {% block content %}
+        <!-- Main Layout -->
+        <div class="row">
+            <!-- Parking Cards on the Left -->
+            <div class="col-md-8">
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card-wrapper">
+                            <img src="{% static 'imgs/zone01-parking.jpg' %}" alt="Zone 01">
+                            <div class="free-slots"><a href="{% url 'slots' %}">324 free slots </a><i class="fas fa-arrow-up"></i></div>
+                            <div>Makuza Under-g Parking</div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card-wrapper">
+                            <img src="{% static 'imgs/zone02-parking.jpg' %}" alt="Zone 02">
+                            <div class="free-slots"><a href="{% url 'slots' %}">324 free slots </a> <i class="fas fa-arrow-up"></i></div>
+                            <div>Zone 51 Parking</div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card-wrapper">
+                            <img src="{% static 'imgs/zone23-parking.jpg' %}" alt="Zone 23">
+                            <div class="free-slots"><a href="{% url 'slots' %}">324 free slots </a> <i class="fas fa-arrow-up"></i></div>
+                            <div>City Tower Underground Parking</div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card-wrapper">
+                            <img src="{% static 'imgs/zone35-parking.jpg' %}" alt="Zone 35">
+                            <div class="free-slots"><a href="{% url 'slots' %}">324 free slots </a> <i class="fas fa-arrow-up"></i></div>
+                            <div class="text-dark success">Umurava Parking</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activities on the Right -->
+            <div class="col-md-4">
+                <h4 class="mb-3">Recent Activities</h4>
+
+                <!-- <div class="activities-card">
+                    <p><strong>ID #4328</strong> - 1:30 min</p>
+                    <p><i class="fa fa-clock"></i>32 min | <i class="fa fa-user"></i> Happy | Place: Zone 51</p>
+                </div> -->
+                <div class="activities-card d-flex">
+                    <div class="activities-image">
+                        <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image">
+                    </div>
+                    <div class="activities-details">
+                        <p><strong>ID #1111</strong> - 2:30 hrs</p>
+                        <p><i class="fa fa-clock"></i>40 min | <i class="fa fa-user"></i>Happy | Place: Zone 43</p>
+                    </div>
+                </div>                
+
+                <div class="activities-card d-flex">
+                    <div class="activities-image">
+                        <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image">
+                    </div>
+                    <div class="activities-details">
+                        <p><strong>ID #2222</strong> - 1:30 hrs</p>
+                        <p><i class="fa fa-clock"></i>40 min | <i class="fa fa-user"></i>Happy | Place: Zone 44</p>
+                    </div>
+                </div>
+                
+                <div class="activities-card d-flex">
+                    <div class="activities-image">
+                        <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image">
+                    </div>
+                    <div class="activities-details">
+                        <p><strong>ID #3333</strong> - 3:30 hrs</p>
+                        <p><i class="fa fa-clock"></i>40 min | <i class="fa fa-user"></i>Happy | Place: Zone 51</p>
+                    </div>
+                </div>
+                
+                <div class="activities-card d-flex">
+                    <div class="activities-image">
+                        <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image">
+                    </div>
+                    <div class="activities-details">
+                        <p><strong>ID #4444</strong> - 1:30 hrs</p>
+                        <p><i class="fa fa-clock"></i>40 min | <i class="fa fa-user"></i>Happy | Place: Zone 51</p>
+                    </div>
+                    
+                </div>
+                
+                <div class="activities-card d-flex">
+                    <div class="activities-image">
+                        <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity Image">
+                    </div>
+                    <div class="activities-details">
+                        <p><strong>ID #4328</strong> - 1:30 hrs</p>
+                        <p><i class="fa fa-clock"></i>40 min | <i class="fa fa-user"></i>Happy | Place: Zone 77</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        {% endblock %}
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

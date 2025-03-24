@@ -1,0 +1,63 @@
+{% extends 'userin.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Ticket Information Section (Left Side) -->
+        <div class="col-md-8">
+            <img src="{% static 'imgs/Group83.png' %}">
+        </div>
+
+        <!-- Recent Activities (Right Side) -->
+        <div class="col-md-4">
+            <h5 class="mb-3">Recent Activities</h5>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #1111</strong> - 2:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 43</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #2222</strong> - 1:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 44</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

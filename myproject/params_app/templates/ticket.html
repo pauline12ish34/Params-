@@ -1,0 +1,100 @@
+{% extends 'userin.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Ticket Information Section (Left Side) -->
+        <div class="col-md-8">
+            <div class="p-4 border bg-white rounded">
+                <h5 class="fw-bold mb-3">Ticket Information</h5>
+                <div class="row">
+                    <!-- QR Code -->
+                    <div class="col-md-4 text-center">
+                        <img src="{% url 'generate_qr_code' %}" alt="QR Code" width="150" height="150">
+                        <p class="text-muted small mt-2">Scan this QR on the scanner machine when you are in the parking lot.</p>
+                    </div>
+                    
+
+                    <!-- Ticket Details -->
+                    <div class="col-md-8">
+                        <div class="row">
+                            <!-- Left Column -->
+                            <div class="col-6">
+                                <p><strong>Name</strong><br>Happy Tumukunde</p>
+                                <p><strong>Parking Area</strong><br>Makuza43</p>
+                                <p><strong>Duration</strong><br>4 hrs</p>
+                                <p><strong>Date</strong><br>24-30-2023</p>
+                            </div>
+                            <!-- Right Column -->
+                            <div class="col-6">
+                                <p><strong>Vehicle Plate</strong><br>RAB8598J</p>
+                                <p><strong>Parking Slot</strong><br>Makuza43</p>
+                                <p><strong>Time</strong><br>3:00 to 7:00 PM</p>
+                                <p><strong>Phone</strong><br>+250799999999</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Button -->
+               
+                <div class="mt-4 d-flex justify-content-between align-items-center">
+                    <a href="{% url 'generate_ticket' %}" class="btn btn-outline-success"><i class="fa fa-download"></i> Download Ticket </a>
+                    <a href="{% url 'destination' %}" class="btn btn-success px-4">Start Navigation</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activities (Right Side) -->
+        <div class="col-md-4">
+            <h5 class="mb-3">Recent Activities</h5>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #1111</strong> - 2:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 43</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #2222</strong> - 1:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 44</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+            <div class="activities-card d-flex mb-2">
+                <div>
+                    <img src="{% static 'imgs/whitecarturnedback.png' %}" alt="Activity" width="50">
+                </div>
+                <div class="ms-2">
+                    <p class="mb-1"><strong>ID #3333</strong> - 3:30 hrs</p>
+                    <p class="text-muted small"><i class="fa fa-clock"></i> 40 min | <i class="fa fa-user"></i> Happy | Zone 51</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

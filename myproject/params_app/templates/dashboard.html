@@ -1,111 +1,277 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Dashboard</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <script src="{% static 'js/dashboard.js' %}"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Space Mono';
+    }
 
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    /* Sidebar styling */
+    .sidebar {
+      width: 250px;
+      background-color: #00a65b;
+      color: white;
+      padding: 20px;
+      height: 109vh;
+    }
 
+    .sidebar h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .sidebar ul li {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .sidebar ul li i {
+      margin-right: 10px;
+    }
+
+    /* Main content styling */
+    .main-content {
+      flex: 1;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar input {
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      width: 300px;
+    }
+
+    .top-bar button {
+      padding: 10px 20px;
+      background-color: #00ffba;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Quick Links styling */
+    .quick-links {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .quick-link {
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+      width: 22%;
+      text-align: center;
+      margin: 5px; /* Adds spacing between blocks */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .quick-link i {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stat-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 32%;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-bar {
+      position: relative;
+      background-color: #e0e0e0;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .progress-bar div {
+      height: 100%;
+      border-radius: 10px;
+      text-align: right;
+      line-height: 20px;
+      color: white;
+      padding-right: 5px;
+    }
+
+    /* Footer Stats */
+    .footer-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer-stat {
+      text-align: center;
+    }
+
+    .footer-stat h1 {
+      margin: 0;
+      color: #00a65b;
+    }
+
+    /* Stars for Best Rated Parks */
+    .stars {
+      color: #ffc107;
+    }
+
+    .grey-star {
+      color: #e0e0e0;
+    }
+  </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row d-flex">
-            <!-- Sidebar -->
-            <nav class=" col-md-2 d-none d-md-inline bg-success sidebar ">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active text-white" href="#">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Locations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Cars</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Billings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Settings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="http://127.0.0.1:8000/">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-            <!-- Main Content -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
-                </div>
-
-                <!-- Summary Cards -->
-                <div class="row mb-4">
-                    <div class="col-md-3">
-                        <div class="card text-center">
-                            <div class="card-body bg-danger text-white">
-                                <h5 class="card-title">Users</h5>
-                                <p class="card-text">140</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card text-center">
-                            <div class="card-body purple text-white">
-                                <h5 class="card-title">Locations</h5>
-                                <p class="card-text">140 park lots</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card text-center">
-                            <div class="card-body bg-success text-white">
-                                <h5 class="card-title">Cars</h5>
-                                <p class="card-text">200</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card text-center">
-                            <div class="card-body bg-primary text-white">
-                                <h5 class="card-title">Billings</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dashboard Charts and Lists -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5>Most Visited Parking</h5>
-                        <ul class="list-group">
-                            <li class="list-group-item">Makuza UP: <span class="badge bg-primary">100%</span></li>
-                            <li class="list-group-item">Cyanika: <span class="badge bg-primary">85%</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <h5>Top Popular Locations</h5>
-                        <ul class="list-group">
-                            <li class="list-group-item">Rugunga: <span class="badge bg-success">100%</span></li>
-                            <li class="list-group-item">Nyange: <span class="badge bg-primary">85%</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </main>
-        </div>
+  <div style="display: flex;">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a  style="color: white;text-decoration: none;display:flex;" class="navbar-brand inline col-sm" href="/">  <img src="{% static 'imgs/Traffic Jam.png' %}" height="40px"> <span><h1>PARMS</h1></span> </a>
+      <ul>
+        <li><a href="{% url 'dashboard' %}" style="color: white; text-decoration: none;"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="{% url 'users' %}" style="color: white; text-decoration: none;"><i class="fas fa-users"></i> Users</a></li>
+        <li><a href="{% url 'billings' %}" style="color: white; text-decoration: none;"><i class="fas fa-file-invoice-dollar"></i> Billings</a></li>
+        <li><a href="{% url 'locations' %}" style="color: white; text-decoration: none;"><i class="fas fa-map-marker-alt"></i> Locations</a></li>
+        <li><a href="{% url 'parkings' %}" style="color: white; text-decoration: none;"><i class="fas fa-car"></i> Parkings</a></li>
+        <li><a href="{% url 'settings' %}" style="color: white; text-decoration: none;"><i class="fas fa-cog"></i> Settings</a></li>
+      </ul>
     </div>
+   
+    
 
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Main Content -->
+    <div class="main-content">
+      {% block content %}
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <p>Welcome, {{ request.user.username }}!</p>
+        <input type="text" placeholder="Search">
+        <button><a href="{% url 'logout' %}"style="text-decoration:none;color:white;font-weight:bold;">Logout</a></button>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="quick-links">
+        <div class="quick-link" style="background-color: #f44336;">
+          <i class="fas fa-users"></i>
+          <h3>Users</h3>
+        </div>
+        <div class="quick-link" style="background-color: #4caf50;">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Locations</h3>
+        </div>
+        <div class="quick-link" style="background-color: #2196f3;">
+          <i class="fas fa-car"></i>
+          <h3>Cars</h3>
+        </div>
+        <div class="quick-link" style="background-color: #9c27b0;">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <h3>Billings</h3>
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="stats-section">
+        <!-- Most Visited Parking -->
+        <div class="stat-card">
+          <h4>Most Visited Parking</h4>
+          <p>Makuza UP</p>
+          <div class="progress-bar">
+            <div style="width: 100%; background-color: #4caf50;">100%</div>
+          </div>
+          <p>Cyanika</p>
+          <div class="progress-bar">
+            <div style="width: 85%; background-color: #ff9800;">85%</div>
+          </div>
+        </div>
+
+        <!-- Top Popular Locations -->
+        <div class="stat-card">
+          <h4>Top Popular Locations</h4>
+          <p>Rugunga</p>
+          <div class="progress-bar">
+            <div style="width: 100%; background-color: #4caf50;">100%</div>
+          </div>
+          <p>Nyarugenge</p>
+          <div class="progress-bar">
+            <div style="width: 85%; background-color: #2196f3;">85%</div>
+          </div>
+          <p>Kiyovu</p>
+          <div class="progress-bar">
+            <div style="width: 70%; background-color: #f44336;">70%</div>
+          </div>
+        </div>
+
+        <!-- Best Rated Parks -->
+        <div class="stat-card">
+          <h4>Best Rated Parks</h4>
+          <p>Rugunga:</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p>Nyamagabe:</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star grey-star"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Stats -->
+      <div class="footer-stats">
+        <div class="footer-stat">
+          <h1>140</h1>
+          <p>Users</p>
+        </div>
+        <div class="footer-stat">
+          <h1>140</h1>
+          <p>Park Lots</p>
+        </div>
+        <div class="footer-stat">
+          <h1>200</h1>
+          <p>Registered Cars</p>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
 </body>
 </html>

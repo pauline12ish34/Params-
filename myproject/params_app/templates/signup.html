@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .alert-danger{
+    background-color:rgba(51, 129, 83, 0.36);
+    color: black;
+}
+</style>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm">
+      <img src="{% static 'imgs/parking-lot.png' %}">
+      <p id="cap" style="font-size:30px;">We are here to make parking easier than ever</p>
+      <p class="description">
+        “Welcome to the PARMS! Log in to check real-time parking availability, reserve spots, 
+        and manage your parking preferences for a hassle-free experience every day.”
+      </p>
+    </div>
+    <div class="col-sm">
+      <h3>Create an account</h3>
+      <p class="d-inline-flex"><span>Already have an account?</span>  <a href="/login" style="color: #198754;">Login Now</a></p>
+      
+      <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        
+        {% if messages %}
+        <div class="alert alert-danger">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="mb-3">
+          <label class="form-label" for="username">Username</label>
+          <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" required>
+
+          <label class="form-label" for="email">Email Address</label>
+          <input type="email" name="email" id="email" class="form-control" placeholder="eg: example@gmail.com" required>
+
+          <label class="form-label" for="password">Password</label>
+          <input type="password" name="password" id="password" class="form-control" placeholder="********" required>
+
+          <label class="form-label" for="confirmPassword">Confirm Password</label>
+          <input type="password" name="confirm_password" id="confirmPassword" class="form-control" placeholder="********" required>
+        </div>
+        
+        <button class="btn btn-success w-100 py-2">Signup</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
