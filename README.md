@@ -10,12 +10,17 @@ git clone
 
 
 python -m venv myenv
+
 myvenv\Scripts\activate
+
 
 cd myproject
 
+
 Install Dependencies
+
 pip install -r requirements.txt
 
 Run the Development Server
+
 python manage.py runserver
