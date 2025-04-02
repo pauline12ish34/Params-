@@ -8,9 +8,11 @@ Usage 💻
 First clone this repository.
 git clone 
 
-
+Create a Virtual Environment
 python -m venv myenv
 
+
+Activate the virtual environment:
 myvenv\Scripts\activate
 
 
